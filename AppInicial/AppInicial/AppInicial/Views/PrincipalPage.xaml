@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:AppInicial.Controls"
+             x:Class="AppInicial.Views.PrincipalPage"
+             Title="Main">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="5"
+                Text="Cadastro"
+                FontSize="Large"/>
+            <Entry
+                Text="{Binding NomePessoa}"
+                Placeholder="Nome"
+                x:Name="nomePessoa"/>
+            <Entry
+                Text="{Binding CPFPessoa}"
+                Placeholder="CPF"
+                x:Name="cpfPessoa"/>
+            <Button
+                Command="{Binding ClickButton}"
+                TextColor="White"
+                BackgroundColor="#58ab41"
+                Text="CONFIRMAR"/>
+
+            <BoxView                
+                Margin="5"
+                BackgroundColor="LightGray"
+                HeightRequest="1"/>
+
+            <Label
+                Margin="5"
+                Text="Lista de Pessoas"
+                FontSize="Large"/>
+
+            <controls:CustomListView
+                SeparatorVisibility="None"
+                RowHeight="80"
+                ItemTappedCommand="{Binding ClickListItem}"
+                x:Name="listagem"
+                ItemsSource="{Binding ListaPessoas}">
+                <controls:CustomListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Margin="5">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Text="Nome: "
+                                        FontSize="Medium"/>
+                                    <Label
+                                        Text="{Binding Nome}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"/>
+                                </StackLayout>                               
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="CPF: "
+                                        FontSize="Medium"/>
+                                    <Label
+                                        Text="{Binding CPF}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"/>
+                                </StackLayout>
+                                <BoxView
+                                    BackgroundColor="Purple"
+                                    HeightRequest="1"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:CustomListView.ItemTemplate>
+            </controls:CustomListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

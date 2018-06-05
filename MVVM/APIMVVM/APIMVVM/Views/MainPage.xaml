@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APIMVVM.Views.MainPage"
+             Title="{Binding Title}">
+
+    <StackLayout>
+        <Label
+            Text="Lista Pessoas"
+            Margin="10"
+            FontSize="Large"/>
+        <ListView
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
+            IsRefreshing="{Binding Refreshing}"
+            ItemsSource="{Binding Pessoas}"
+            RowHeight="110">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="10">
+                            <Label
+                                Text="{Binding Name, StringFormat='Nome: {0}'}"/>
+                            <Label
+                                Text="{Binding City, StringFormat='Cidade: {0}'}"/>
+                            <Label
+                                Text="{Binding Number, StringFormat='Número: {0}'}"/>
+                            <Label
+                                Text="{Binding Age, StringFormat='Idade: {0}'}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
